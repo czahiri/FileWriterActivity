@@ -31,6 +31,16 @@ private static void printFileSize(String fileName) {
     }
 }
 
+public static String toString(InputStream input) throws IOException {
+    StringBuilder sb = new StringBuilder();
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line).append(System.lineSeparator());
+            }
+        }
+    return sb.toString();
+    }
     public static void main(String[] args) {
         createHiddenPasswordFile();
         createConfidentialInHiddenFolder();
