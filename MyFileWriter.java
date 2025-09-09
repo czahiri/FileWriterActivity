@@ -20,6 +20,17 @@ public class MyFileWriter {
         }
     }
 
+    // Calculate and print the file size using the File class
+private static void printFileSize(String fileName) {
+    // Implementation goes here
+    File file = new File(fileName);
+    if (file.exists() && file.isFile()) {
+        System.out.println("File size of " + fileName + ": " + file.length() + " bytes");
+    } else {
+        System.out.println("File " + fileName + " does not exist."); 
+    }
+}
+
     public static void main(String[] args) {
         createHiddenPasswordFile();
         createConfidentialInHiddenFolder();
