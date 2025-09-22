@@ -21,14 +21,15 @@ public class MyFileWriter {
     }
 
     // Calculate and print the file size using the File class
-private static void printFileSize(String fileName) {
-    // Implementation goes here
-    File file = new File(fileName);
-    if (file.exists() && file.isFile()) {
-        System.out.println("File size of " + fileName + ": " + file.length() + " bytes");
-    } else {
-        System.out.println("File " + fileName + " does not exist."); 
+private static void printFileSize(String... fileNames) {
+    long totalSize = 0;
+    for (String fileName : fileNames) {
+        File file = new File(fileName);
+        if (file.exists()) {
+            totalSize += file.length();
+        }
     }
+    System.out.println("Total size of all files: " + totalSize + " bytes");
 }
 
 public static String toString(InputStream input) throws IOException {
@@ -44,6 +45,7 @@ public static String toString(InputStream input) throws IOException {
     public static void main(String[] args) {
         createHiddenPasswordFile();
         createConfidentialInHiddenFolder();
+        printFileSize("HelloWorld.txt", ".secretpassword.txt");
     }
 }
 
